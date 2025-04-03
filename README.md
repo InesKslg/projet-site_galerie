@@ -26,3 +26,7 @@ Dossier style pour les fichiers CSS.
 Dossier media-img pour les images.
 Dossier uploads pour les fichiers uploadés.
 Dossier utilisateur pour la gestion des utilisateurs.
+
+Concernant la base de données, après avoir créé les serveurs vous y accédez grâce au lien :1200 ou directement par http://localhost:1200/  dans l'URL.
+
+Concernant le site, il suffit de taper localhost dans l'URL.
