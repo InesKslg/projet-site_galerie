@@ -45,8 +45,10 @@ Pour construire vos serveurs dockers, veuillez suivre les étapes suivantes :
 6 Ouvrez le terminal, entrer la commande : " cd c:\chemind_vers_cerépertoire\docker_web "
 
 7 tapez les deux commandes suivantes : 
-  Commande 1 : " docker-compose build "
-  Commande 2 : " docker-compose up -d "
+  Commande 1 : "docker build -t projet-site-galerie"
+  Commande 2 : "docker-compose up -d"
+  Commande 3 : "docker ps"
+  Commande 4 : docker-compose down"
 
 
 L'accès à vos projets se fait en écrivant "localhost" dans la barre de recherche du navigateur.
