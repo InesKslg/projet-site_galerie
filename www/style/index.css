@@ -1,182 +1,215 @@
 /* Définition des couleurs principales */
 :root {
-    --primary-color: #88cff2; /* Bleu clair */
-    --secondary-color: #f493ea; /* Rose vif */
-    --background-color: #f4f1f3; /* Fond gris clair */
-    --error-bg-color: #f8d7da; /* Fond rouge clair pour erreurs */
-    --success-bg-color: #d4edda; /* Fond vert clair pour succès */
-    --text-color: #333; /* Couleur du texte principale */
-    --white-color: #fff; /* Blanc */
-    --highlight-color: #f1c3ed; /* Rose pâle pour mise en avant */
+    --primary-color: #88cff2; /* Bleu clair utilisé comme couleur principale */
+    --secondary-color: #f493ea; /* Rose vif utilisé comme couleur secondaire */
+    --background-color: #f4f1f3; /* Fond gris clair utilisé comme couleur de fond */
+    --error-bg-color: #f8d7da; /* Fond rouge clair pour indiquer des erreurs */
+    --success-bg-color: #d4edda; /* Fond vert clair pour indiquer un succès */
+    --text-color: #333; /* Couleur principale du texte (gris foncé) */
+    --white-color: #fff; /* Blanc utilisé pour certains éléments */
+    --highlight-color: #f1c3ed; /* Rose pâle pour mettre en avant certains éléments */
 }
 
 /* Suppression des marges et paddings par défaut */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* Retire la marge par défaut de tous les éléments */
+    padding: 0; /* Retire le padding par défaut de tous les éléments */
+    box-sizing: border-box; /* Utilise le modèle de boîte incluant les bordures et les marges dans la largeur/hauteur */
 }
 
 /* Style du corps de la page */
 body {
-    font-family: 'Lato', sans-serif;
-    background: linear-gradient(135deg, var(--white-color), var(--primary-color));
-    color: var(--text-color);
-    line-height: 1.6;
-    position: relative;
+    font-family: 'Lato', sans-serif; /* Déclare la police de caractères utilisée */
+    background: linear-gradient(135deg, var(--white-color), var(--primary-color)); /* Dégradé de fond allant du blanc au bleu clair */
+    color: var(--text-color); /* Applique la couleur de texte définie dans :root */
+    line-height: 1.6; /* Définit l'interligne pour améliorer la lisibilité */
+    position: relative; /* Permet d'utiliser des éléments positionnés à l'intérieur du body */
 }
 
 /* Image de fond semi-transparente */
 body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("../media-img/image-italie.jpg") no-repeat center center fixed;
-    background-size: cover;
-    opacity: 0.3;
-    z-index: -1;
+    content: ""; /* Ajoute un pseudo-élément avant le contenu du body */
+    position: absolute; /* Positionne l'image de fond de manière absolue */
+    top: 0; left: 0; /* Place l'image en haut à gauche de la page */
+    width: 100%; /* L'image couvre toute la largeur de la page */
+    height: 100%; /* L'image couvre toute la hauteur de la page */
+    background: url("../media-img/image-italie.jpg") no-repeat center center fixed; /* Définit l'image de fond */
+    background-size: cover; /* L'image couvre tout l'espace sans déformer ses proportions */
+    opacity: 0.3; /* Rend l'image semi-transparente */
+    z-index: -1; /* Place l'image derrière tous les autres éléments */
 }
 
 /* En-tête */
 header {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    padding: 40px 0;
-    text-align: center;
-    border-bottom: 2px solid #e7dcec;
+    background-color: var(--primary-color); /* Applique la couleur primaire comme fond */
+    color: var(--white-color); /* Applique la couleur blanche pour le texte */
+    padding: 40px 0; /* Ajoute du padding vertical autour de l'en-tête */
+    text-align: center; /* Centre le texte à l'intérieur de l'en-tête */
+    border-bottom: 2px solid #e7dcec; /* Ajoute une bordure subtile en bas de l'en-tête */
 }
 
 header h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+    font-size: 3rem; /* Définir la taille de la police du titre */
+    margin-bottom: 10px; /* Ajoute un espacement en bas du titre */
 }
 
 /* Boutons de navigation */
 nav .btn, nav .manage-btn {
-    background-color: var(--white-color);
-    color: var(--primary-color);
-    padding: 12px 25px;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: bold;
-    border: 2px solid var(--secondary-color);
-    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--white-color); /* Fond blanc pour les boutons */
+    color: var(--primary-color); /* Texte en bleu clair */
+    padding: 12px 25px; /* Espacement intérieur des boutons */
+    text-decoration: none; /* Retire la décoration de texte (comme le soulignement) */
+    border-radius: 30px; /* Bords arrondis pour les boutons */
+    font-weight: bold; /* Texte en gras */
+    border: 2px solid var(--secondary-color); /* Bordure rose vif autour des boutons */
+    transition: background-color 0.3s, color 0.3s; /* Transition douce pour les changements de couleur */
 }
 
 /* Effet au survol des boutons */
 nav .btn:hover, nav .manage-btn:hover {
-    background-color: var(--background-color);
-    color: var(--secondary-color);
+    background-color: var(--background-color); /* Change le fond au survol */
+    color: var(--secondary-color); /* Change la couleur du texte au survol */
 }
 
 /* Contenu principal */
 main {
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 40px 20px; /* Espacement autour du contenu principal */
+    max-width: 1200px; /* Limite la largeur maximale du contenu à 1200px */
+    margin: 0 auto; /* Centre le contenu horizontalement */
 }
 
 /* Section galerie */
 .gallery {
-    text-align: center;
-    margin-bottom: 10px;
+    text-align: center; /* Centre le texte dans la section galerie */
+    margin-bottom: 10px; /* Ajoute un espacement sous la galerie */
 }
 
 .gallery h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    color: var(--primary-color);
-    font-weight: bold;
+    font-size: 2.5rem; /* Définit la taille de la police pour le titre de la galerie */
+    margin-bottom: 30px; /* Ajoute un espacement sous le titre */
+    color: var(--primary-color); /* Couleur du titre en bleu clair */
+    font-weight: bold; /* Texte en gras pour le titre */
 }
 
 /* Grille des médias (images/vidéos) */
 .media-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
-    margin-top: 20px;
+    display: grid; /* Utilise le système de grille CSS pour afficher les éléments */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Crée des colonnes qui s'adaptent à la taille de l'écran */
+    gap: 25px; /* Espace entre les éléments de la grille */
+    margin-top: 20px; /* Ajoute un espacement au-dessus de la grille */
 }
 
 /* Style des éléments média */
 .media-item {
-    background-color: var(--highlight-color);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    background-color: var(--highlight-color); /* Fond rose pâle pour chaque élément média */
+    padding: 20px; /* Ajoute de l'espace autour du contenu de l'élément */
+    border-radius: 15px; /* Coins arrondis */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère autour des éléments */
+    transition: transform 0.3s ease; /* Transition douce au survol */
 }
 
 /* Effet au survol des médias */
 .media-item:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px); /* L'élément se déplace légèrement vers le haut lors du survol */
 }
 
+/* Style des images et vidéos */
 .media-img, .media-video {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 15px;
+    width: 100%; /* Les images et vidéos occupent toute la largeur de l'élément parent */
+    border-radius: 8px; /* Coins arrondis pour les images/vidéos */
+    margin-bottom: 15px; /* Espacement sous les images/vidéos */
 }
 
 /* Pied de page */
 footer {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    padding: 15px 0;
-    text-align: center;
-    margin-top: 60px;
-    border-top: 2px solid #f1e5f0;
+    background-color: var(--primary-color); /* Fond bleu clair pour le pied de page */
+    color: var(--white-color); /* Texte blanc */
+    padding: 15px 0; /* Espacement vertical dans le pied de page */
+    text-align: center; /* Centre le texte dans le pied de page */
+    margin-top: 60px; /* Ajoute un espacement au-dessus du pied de page */
+    border-top: 2px solid #f1e5f0; /* Ajoute une bordure subtile en haut du pied de page */
 }
 
 /* Messages d'alerte */
 .message {
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    text-align: center;
+    padding: 10px; /* Ajoute de l'espace intérieur autour du message */
+    margin-bottom: 20px; /* Ajoute de l'espace en bas du message */
+    border-radius: 5px; /* Arrondit les coins du message */
+    text-align: center; /* Centre le texte à l'intérieur du message */
 }
 
 /* Message de succès */
 .message.success {
-    background-color: var(--success-bg-color);
-    color: #85d798;
-    border: 1px solid #c3e6cb;
+    background-color: var(--success-bg-color); /* Fond vert clair pour un message de succès */
+    color: #85d798; /* Texte vert foncé */
+    border: 1px solid #c3e6cb; /* Bordure verte claire */
 }
 
 /* Message d'erreur */
 .message.error {
-    background-color: var(--error-bg-color);
-    color: #e11a2e;
-    border: 1px solid #f5c6cb;
+    background-color: var(--error-bg-color); /* Fond rouge clair pour un message d'erreur */
+    color: #e11a2e; /* Texte rouge foncé */
+    border: 1px solid #f5c6cb; /* Bordure rouge claire */
 }
 
 /* Description sous les médias */
 .media-description {
-    font-family: 'Lato', sans-serif;
-    font-size: 1.2rem;
-    color: var(--text-color);
-    text-align: center;
-    margin-top: 10px;
-    font-style: italic;
+    font-family: 'Lato', sans-serif; /* Police de caractères pour la description */
+    font-size: 1.2rem; /* Taille de la police pour la description */
+    color: var(--text-color); /* Couleur du texte définie précédemment */
+    text-align: center; /* Centre le texte de la description */
+    margin-top: 10px; /* Ajoute un espacement au-dessus de la description */
+    font-style: italic; /* Met la description en italique */
 }
 
 /* Adaptation aux petits écrans */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 2rem;
+        font-size: 2rem; /* Réduit la taille du titre dans l'en-tête pour les petits écrans */
     }
-    
+
     nav .btn, nav .manage-btn {
-        padding: 8px 20px;
+        padding: 8px 20px; /* Réduit l'espace intérieur des boutons sur petits écrans */
     }
-    
+
     .gallery h2 {
-        font-size: 2rem;
+        font-size: 2rem; /* Réduit la taille du titre de la galerie sur petits écrans */
     }
-    
+
     .media-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Affiche les éléments en une seule colonne sur petits écrans */
     }
+}
+
+/* Pagination globale */
+.pagination {
+    list-style: none; /* Enlève les puces (points) de la liste */
+    display: flex; /* Met les éléments enfants (.li) à l'horizontale */
+    justify-content: center; /* Centre les boutons horizontalement dans le conteneur */
+    gap: 15px; /* Espace de 15px entre chaque bouton */
+    margin-top: 30px; /* Espace au-dessus de la pagination */
+    padding: 0; /* Enlève les marges internes (padding par défaut) de la liste */
+}
+
+/* Éléments de liste dans la pagination */
+.pagination li {
+    list-style: none; /* Enlève à nouveau les puces, au cas où le navigateur les remettrait */
+}
+
+/* Liens de pagination */
+.pagination li a {
+    display: inline-block; /* Permet de définir une largeur et un padding sur le lien */
+    padding: 3px 8px; /* Espace intérieur des boutons : 10px en haut/bas, 20px à gauche/droite */
+    background-color: var(--primary-color); /* Couleur de fond définie dans :root (bleu clair) */
+    color: var(--white-color); /* Couleur du texte (blanc) */
+    border-radius: 25px; /* Bords arrondis pour un effet de bouton */
+    text-decoration: none; /* Supprime le soulignement des liens */
+    font-weight: bold; /* Texte en gras */
+    transition: background-color 0.3s, color 0.3s; /* Animation fluide sur le hover */
+}
+
+/* Effet au survol des boutons */
+.pagination li a:hover {
+    background-color: var(--secondary-color); /* Change la couleur de fond au survol (rose vif) */
+    color: var(--white-color); /* Garde le texte en blanc au survol */
 }
