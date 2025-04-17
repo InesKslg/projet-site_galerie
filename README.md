@@ -40,9 +40,11 @@ Pour construire vos serveurs dockers, veuillez suivre les étapes suivantes :
 
 4 L'ensemble de vos projets sera stocké dans le répertoire "site".
 
-5 Ouvrez le terminal 
+5 Créez un dossier contenant le dossier www et les deux fichiers dockers
 
-6 tapez les deux commandes suivantes : 
+6 Ouvrez le terminal, entrer la commande : " cd c:\chemind_vers_cerépertoire\docker_web "
+
+7 tapez les deux commandes suivantes : 
   Commande 1 : " docker-compose build "
   Commande 2 : " docker-compose up -d "
 
