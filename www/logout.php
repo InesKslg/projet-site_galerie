@@ -18,14 +18,39 @@ try {
     die("Erreur de connexion : " . $e->getMessage());
 }
 
-// Récupérer les photos publiques depuis la base de données
+// Nombre d'éléments par page
+$limit = 3;
+
+// Récupérer la page actuelle, ou définir la première page par défaut
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+// Calculer l'offset basé sur la page
+$offset = ($page - 1) * $limit;
+
 try {
-    // Exécution de la requête SQL pour obtenir les photos dont le champ 'public' est égal à 1, triées par date d'ajout
-    $stmt = $pdo->query("SELECT * FROM photos WHERE public = 1 ORDER BY date_added DESC");
-    // Récupération des résultats sous forme de tableau associatif
+    // Récupérer le nombre total de photos publiques pour la pagination
+    $stmt = $pdo->query("SELECT COUNT(*) FROM photos WHERE public = 1");
+    $total_photos = $stmt->fetchColumn(); // Récupère le nombre total de photos publiques
+
+    // Calculer le nombre total de pages
+    $total_pages = ceil($total_photos / $limit);
+
+    // Préparer la requête SQL pour récupérer les photos publiques avec pagination
+    $stmt = $pdo->prepare("SELECT * FROM photos WHERE public = 1 ORDER BY date_added DESC LIMIT :limit OFFSET :offset");
+    
+    // Lier la valeur du paramètre LIMIT
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    
+    // Lier la valeur du paramètre OFFSET
+    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+    
+    // Exécuter la requête
+    $stmt->execute();
+    
+    // Récupérer les résultats dans un tableau associatif
     $public_photos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    // En cas d'erreur lors de la récupération des photos, un message d'erreur est affiché
+    // Afficher une erreur en cas d'échec de la requête
     die("Erreur lors de la récupération des photos publiques : " . $e->getMessage());
 }
 ?>
@@ -76,6 +101,38 @@ try {
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
+
+            <!-- Navigation de pagination -->
+            <nav class="pagination">
+                <ul class="pagination-list">
+                    <!-- Lien vers la première page -->
+                    <li class="<?= ($page <= 1) ? 'disabled' : '' ?>">
+                        <a href="?page=1">Première page</a>
+                    </li>
+
+                    <!-- Lien vers la page précédente -->
+                    <li class="<?= ($page <= 1) ? 'disabled' : '' ?>">
+                        <a href="?page=<?= max(1, $page - 1) ?>">Précédente</a>
+                    </li>
+
+                    <!-- Liens vers chaque page -->
+                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                        <li class="<?= ($page === $i) ? 'active' : '' ?>">
+                            <a href="?page=<?= $i ?>"><?= $i ?></a>
+                        </li>
+                    <?php endfor; ?>
+
+                    <!-- Lien vers la page suivante -->
+                    <li class="<?= ($page >= $total_pages) ? 'disabled' : '' ?>">
+                        <a href="?page=<?= min($total_pages, $page + 1) ?>">Suivante</a>
+                    </li>
+
+                    <!-- Lien vers la dernière page -->
+                    <li class="<?= ($page >= $total_pages) ? 'disabled' : '' ?>">
+                        <a href="?page=<?= $total_pages ?>">Dernière page</a>
+                    </li>
+                </ul>
+            </nav>
         </section>
     </main>
 </body>
