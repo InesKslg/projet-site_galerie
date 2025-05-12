@@ -31,27 +31,41 @@ Dossier utilisateur pour la gestion des utilisateurs.
 
 Pour construire vos serveurs dockers, veuillez suivre les étapes suivantes :
 -
-1 Ajoutez votre base de données dans le répertoire "build_mariadb".
+Ouvrez le terminal, entrer la commande : " cd c:\chemind_vers_cerépertoire\docker_web "
 
-2 Éditez le fichier "Dockerfile" qui se trouve dans le répertoire "build_mariadb".
-
-3 Dans la ligne 2 de ce fichier, éditez la ligne en ajoutant le nom de la base de données 
-  Exemple : "COPY galeriephoto.sql /docker-entrypoint-initdb.d/"
-
-4 L'ensemble de vos projets sera stocké dans le répertoire "site".
-
-5 Créez et nommer un dossier contenant le dossier www et les deux fichiers dockers
-
-6 Ouvrez le terminal, entrer la commande : " cd c:\chemind_vers_cerépertoire\docker_web "
-
-7 tapez les deux commandes suivantes : 
-  Commande 1 : "docker build -t projet-site-galerie"
-  Commande 2 : "docker-compose up -d"
-  Commande 3 : "docker ps"
-  Commande 4 : docker-compose down"
-
-
-L'accès à vos projets se fait en écrivant "localhost" dans la barre de recherche du navigateur.
+tapez les deux commandes suivantes : 
+  Commande 1 -> Créer l'image pour le serveur Apache/PHP : "docker-compose build
+  Commande 2 -> Démarrer les conteneurs : "docker-compose up -d"
+  Commande 3 -> vérification : "docker ps"
 
 Concernant la base de données, vous y accédez grâce au lien :1200 ou directement par http://localhost:1200/  dans l'URL.
 
+Connexion à la base de données :
+-
+Hôte : db (nom du conteneur MariaDB)
+Utilisateur : user
+Mot de passe : user
+Base de données : test (créée automatiquement avec les variables d'environnement)
+
+requetes pour création tables à entrer directement dans la base de donnée test :
+-
+CREATE TABLE utilisateurs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    login VARCHAR(255) NOT NULL,
+    mot_de_passe VARCHAR(255) NOT NULL,
+    date_inscription DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (login) REFERENCES utilisateurs(login)
+);
+
+CREATE TABLE photos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    login VARCHAR(255) NOT NULL,
+    photo_url VARCHAR(255) NOT NULL,
+    description TEXT,
+    date_added DATETIME DEFAULT CURRENT_TIMESTAMP,
+    public BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (login) REFERENCES utilisateurs(login)
+);
+
+L'accès à vos projets se fait en écrivant "localhost" dans la barre de recherche du navigateur.
+-
